@@ -4,7 +4,7 @@ CXXFLAGS = -std=c++20
 
 # Define the target executable and source file
 TARGET = main
-SRC = main.cpp
+SRC = main.cpp Pokemon.cpp
 
 # Default target to build
 all: $(TARGET)
@@ -16,4 +16,3 @@ $(TARGET): $(SRC)
 # Clean up build artifacts
 clean:
 	rm -f $(TARGET)
-
