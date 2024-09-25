@@ -1,6 +1,3 @@
-#ifndef COOLFILE_H
-#define COOLFILE_H
+#pragma once
 
 void coolFunction();
-
-#endif
