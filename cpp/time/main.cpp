@@ -1,0 +1,17 @@
+#include <iostream>
+#include "Time.h"
+
+using std::cout, std::endl;
+
+int main() {
+  cout << "Testing Time!" << endl;
+  Time t1;
+  Time t2(14, 6, 1);
+  Time t3(24, 61, 432432432);
+
+  cout << t1 << endl;
+  cout << t2 << endl;
+  cout << t3 << endl;
+
+  return 0;
+}
