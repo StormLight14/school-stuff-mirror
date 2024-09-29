@@ -7,7 +7,7 @@ int main() {
   cout << "Testing Time!" << endl;
   Time t1;
   Time t2(14, 6, 1);
-  Time t3(24, 61, 432432432);
+  Time t3(24, 61, 43424);
 
   cout << t1 << endl;
   cout << t2 << endl;

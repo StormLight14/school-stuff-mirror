@@ -11,6 +11,7 @@ Time::Time() {
 }
 
 Time::Time(int h, int m, int s) {
+  days = 0;
   hours = h;
   minutes = m;
   seconds = s;
@@ -34,18 +35,16 @@ ostream& operator << (ostream &out, Time &t) {
 }
 
 void Time::fixOverflow() {
-  while (seconds > 59 || minutes > 59 || hours > 23) {
-    if (seconds > 59) {
-      minutes += 1;
-      seconds = 0 + seconds - 59;
-    }
-    if (minutes > 59) {
-      hours += 1;
-      minutes = 0 + minutes - 59;
-    }
-    if (hours > 23) {
-      days += 1;
-      hours = 0 + hours - 23;
-    }
+  if (seconds > 59) {
+    minutes += seconds / 60;
+    seconds = seconds % 60;
+  }
+  if (minutes > 59) {
+    hours += minutes / 60;
+    minutes %= 60;
+  }
+  if (hours > 23) {
+    days += hours / 24;
+    hours %= 24;
   }
 }
