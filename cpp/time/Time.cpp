@@ -10,13 +10,30 @@ Time::Time() {
   seconds = 0;
 }
 
-Time::Time(int h, int m, int s) {
+Time::Time(int d, int h, int m, int s) {
   days = 0;
   hours = h;
   minutes = m;
   seconds = s;
 
   fixOverflow();
+}
+
+Time Time::operator + (Time t) {
+  int s = seconds + t.seconds;
+  int m = minutes + t.minutes;
+  int h = hours + t.hours;
+  int d = days + t.days;
+
+  Time newTime(d, h, m, s);
+  newTime.fixOverflow();
+  return newTime;
+}
+
+Time Time::operator += (int s) {
+  seconds += s;
+  fixOverflow();
+  return *this;
 }
 
 ostream& operator << (ostream &out, Time &t) {
