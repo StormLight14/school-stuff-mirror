@@ -48,3 +48,24 @@ ostream &operator << (ostream &out, Game g) {
 
   return out;
 }
+
+void Game::movePiece(int num) {
+  for (int row = 0; row < SIZE; row++) {
+    for (int col = 0; col < SIZE; col++) {
+      if (grid[row][col] == '0' + num){
+        for (int irow = -1; irow <= 1; ++irow) {
+          for (int icol = -1; icol <= 1; ++icol) {
+            if (irow == icol) continue; // avoid diagonal and same cell
+            if (Game::isValid(row + irow, col + icol)) {
+              if (grid[row + irow][col + icol] == ' ') {
+                grid[row + irow][col + icol] = grid[row][col];
+                grid[row][col] = ' ';
+                return;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

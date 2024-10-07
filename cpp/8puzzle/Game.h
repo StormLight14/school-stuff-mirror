@@ -7,6 +7,7 @@ class Game {
   public:
     Game();
     bool isValid(int, int);
+    void movePiece(int);
     friend ostream &operator << (ostream &out, Game g);
     const int SIZE = 3;
   private:

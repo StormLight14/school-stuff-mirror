@@ -13,6 +13,7 @@ int main() {
     cout << "Choose a number to move: ";
     int choice;
     cin >> choice;
+    game.movePiece(choice);
   }
   return 0;
 }
