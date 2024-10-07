@@ -1,5 +1,4 @@
 #include <iostream>
-#pragma once
 
 using std::ostream;
 
@@ -8,6 +7,8 @@ class Game {
     Game();
     bool isValid(int, int);
     void movePiece(int);
+    bool hasWon();
+    void instantWin();
     friend ostream &operator << (ostream &out, Game g);
     const int SIZE = 3;
   private:

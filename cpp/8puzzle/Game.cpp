@@ -2,6 +2,7 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <cmath>
 
 using std::endl, std::cout;
 
@@ -35,6 +36,54 @@ bool Game::isValid(int row, int col) {
   return row >= 0 && row < SIZE && col >= 0 && col < SIZE;
 }
 
+void Game::movePiece(int num) {
+  for (int row = 0; row < SIZE; row++) {
+    for (int col = 0; col < SIZE; col++) {
+      if (grid[row][col] == '0' + num){
+        for (int irow = -1; irow <= 1; ++irow) {
+          for (int icol = -1; icol <= 1; ++icol) {
+            if (std::abs(irow) == std::abs(icol)) continue; // avoid diagonal and same cell
+
+            if (Game::isValid(row + irow, col + icol)) {
+              if (grid[row + irow][col + icol] == ' ') {
+                grid[row + irow][col + icol] = grid[row][col];
+                grid[row][col] = ' ';
+                return;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+bool Game::hasWon() {
+  int lastNum = 0;
+  for (int row = 0; row < SIZE; row++) {
+    for (int col = 0; col < SIZE; col++) {
+      if (grid[row][col] != ' ' && grid[row][col] != (lastNum + 1) + '0') {
+        return false;
+      }
+      lastNum++;
+    }
+  }
+
+  return true;
+}
+
+void Game::instantWin() {
+  grid[0][0] = '1';
+  grid[0][1] = '2';
+  grid[0][2] = '3';
+  grid[1][0] = '4';
+  grid[1][1] = '5';
+  grid[1][2] = '6';
+  grid[2][0] = '7';
+  grid[2][1] = '8';
+  grid[2][2] = ' ';
+}
+
 ostream &operator << (ostream &out, Game g) {
   for (int row = 0; row < g.SIZE; row++) {
     for (int col = 0; col < g.SIZE; col++) {
@@ -49,23 +98,3 @@ ostream &operator << (ostream &out, Game g) {
   return out;
 }
 
-void Game::movePiece(int num) {
-  for (int row = 0; row < SIZE; row++) {
-    for (int col = 0; col < SIZE; col++) {
-      if (grid[row][col] == '0' + num){
-        for (int irow = -1; irow <= 1; ++irow) {
-          for (int icol = -1; icol <= 1; ++icol) {
-            if (irow == icol) continue; // avoid diagonal and same cell
-            if (Game::isValid(row + irow, col + icol)) {
-              if (grid[row + irow][col + icol] == ' ') {
-                grid[row + irow][col + icol] = grid[row][col];
-                grid[row][col] = ' ';
-                return;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
