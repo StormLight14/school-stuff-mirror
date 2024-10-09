@@ -1,7 +1,7 @@
 #include "Stack.h"
 #include <iostream>
 
-using std::endl, std::ostream;
+using std::ostream;
 
 Stack::Stack() {
   top = nullptr;
