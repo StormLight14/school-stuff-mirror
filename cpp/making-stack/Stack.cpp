@@ -34,7 +34,7 @@ bool Stack::isEmpty() {
   return top == nullptr;
 }
 
-string Stack::getTop() {
+string Stack::peek() {
   return top->value;
 }
 

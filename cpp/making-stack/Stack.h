@@ -19,7 +19,7 @@ class Stack {
     // remove the top value from the stack
     void pop();
     // get top value
-    string getTop();
+    string peek();
     // returns true if stack is empty
     bool isEmpty();
     friend ostream &operator << (ostream &, const Stack&);
