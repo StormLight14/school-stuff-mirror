@@ -49,7 +49,7 @@ void Stack::pop() {
 ostream& operator << (ostream &out, const Stack &stack) {
   Node *current = stack.top;
   while (current != nullptr) {
-    out << current->value << " ";
+    out << current->value << ", ";
     current = current->next;
   }
   return out;
