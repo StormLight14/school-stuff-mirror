@@ -5,7 +5,7 @@ using std::cout, std::endl;
 
 int main() {
   cout << "Stack implemented with linked list!" << endl;
-  Stack stack;
+  Stack<string> stack;
   stack.push("Lasagna");
   stack.push("Burger");
   stack.push("Ice Cream");
