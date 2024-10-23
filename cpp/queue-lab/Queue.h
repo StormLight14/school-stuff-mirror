@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <stdexcept>
 #include <string>
 
 using std::ostream, std::string;
@@ -100,7 +101,7 @@ T Queue<T>::peek() {
   if (!isEmpty()) {
     return front->data;
   }
-  return "";
+  throw std::runtime_error("Queue is empty");
 }
 
 template<typename T>
