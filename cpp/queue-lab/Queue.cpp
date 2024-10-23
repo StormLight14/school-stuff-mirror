@@ -48,7 +48,6 @@ void Queue::remove() {
 
     delete temp; // delete mem of old front node
   }
-  
 }
 
 string Queue::peek() {
