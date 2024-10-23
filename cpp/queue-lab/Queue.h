@@ -14,8 +14,11 @@ template<typename T> class Node {
     T data;
 };
 
-template<typename T> class Queue;
-template<typename T> ostream &operator << (ostream &, const Queue<T>&);
+template<typename T> 
+class Queue;
+
+template<typename T> 
+ostream &operator << (ostream &, const Queue<T>&);
 
 template<typename T> class Queue {
   public:
@@ -30,8 +33,8 @@ template<typename T> class Queue {
     void remove();
     // returns the front element, if it exists
     T peek();
-
-    friend ostream &operator << (ostream &out, const Queue<T> &s);
+    template<typename Y>
+    friend ostream &operator << (ostream &out, const Queue<Y> &s);
   private:
     Node<T>* front;
     Node<T>* back;
