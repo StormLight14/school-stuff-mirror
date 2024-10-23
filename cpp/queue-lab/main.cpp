@@ -7,12 +7,14 @@ template <class T>
 void check(string, T, T);
 template <class T>
 void fillQueue(Queue<T>&);
+template <class T>
 void testIsEmpty();
+template <class T>
 void checkQueueOrder();
 
 int main() {
-  testIsEmpty();
-  checkQueueOrder();
+  testIsEmpty<string>();
+  checkQueueOrder<string>();
 }
 
 template <class T>
