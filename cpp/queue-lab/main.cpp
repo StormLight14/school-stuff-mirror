@@ -3,9 +3,10 @@
 
 using namespace std;
 
-template <class type>
-void check(string, type, type);
-void fillQueue(Queue&);
+template <class T>
+void check(string, T, T);
+template <class T>
+void fillQueue(Queue<T>&);
 void testIsEmpty();
 void checkQueueOrder();
 
@@ -14,24 +15,26 @@ int main() {
   checkQueueOrder();
 }
 
-void fillQueue(Queue &queue){
+template <class T>
+void fillQueue(Queue<T> &queue){
   queue.add("one");
   queue.add("two");
   queue.add("three");
   queue.add("four");
   cout << queue << endl;
 }
+template <class T>
 void testIsEmpty(){
-  Queue queue;
+  Queue<T> queue;
   check("1. Checking Empty Queue", queue.isEmpty(), true);
   queue.add("one");
   queue.remove();
   check("2. Checking Recently Empty Queue", queue.isEmpty(), true);
 }
 
-
+template <class T>
 void checkQueueOrder(){
-  Queue queue;
+  Queue<T> queue;
   fillQueue(queue);
   string txt = "one";
   check("3. Check Front: ", queue.peek(), txt);

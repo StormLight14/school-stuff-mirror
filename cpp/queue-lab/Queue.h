@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 
@@ -30,10 +31,10 @@ template<typename T> class Queue {
     // returns the front element, if it exists
     T peek();
 
-    friend ostream &operator << (ostream &out, const Queue &s);
+    friend ostream &operator << (ostream &out, const Queue<T> &s);
   private:
-    Node* front;
-    Node* back;
+    Node<T>* front;
+    Node<T>* back;
 };
 
 template<typename T>
@@ -68,7 +69,7 @@ bool Queue<T>::isEmpty() {
 
 template<typename T>
 void Queue<T>::add(T value) {
-  Node* newNode = new Node(value);
+  Node<T>* newNode = new Node(value);
   if (isEmpty()) {
     front = newNode;
   } else {
@@ -80,7 +81,7 @@ void Queue<T>::add(T value) {
 template<typename T>
 void Queue<T>::remove() {
   if (!isEmpty()) {
-    Node *temp = front;
+    Node<T> *temp = front;
     front = front->next; // move front over to the next node
 
     if (front == nullptr) {

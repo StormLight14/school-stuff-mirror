@@ -3,7 +3,7 @@ CXXFLAGS = -std=c++17
 
 # Define the target executable and source file
 TARGET = main
-SRC = main.cpp Queue.cpp
+SRC = main.cpp
 
 # Default target to build
 all: $(TARGET)
