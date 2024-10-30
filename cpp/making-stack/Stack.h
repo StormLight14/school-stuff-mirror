@@ -43,7 +43,7 @@ Stack<T>::~Stack() {
 
 template<typename T>
 void Stack<T>::push(T value) {
-    Node *toAdd = new Node;
+    auto toAdd = new Node;
     toAdd->value = value;
 
     if (isEmpty()) {
@@ -68,7 +68,7 @@ T Stack<T>::peek() {
 template<typename T>
 void Stack<T>::pop() {
     if (!isEmpty()) {
-        Node *temp = top;
+        auto temp = top;
         top = top->next;
         delete temp;
     }
@@ -76,7 +76,7 @@ void Stack<T>::pop() {
 
 template<typename T>
 ostream &operator<<(ostream &out, const Stack<T> &stack) {
-    Node *current = stack.top;
+    auto current = stack.top;
     while (current != nullptr) {
         out << current->value << ", ";
         current = current->next;
