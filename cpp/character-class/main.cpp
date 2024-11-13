@@ -8,14 +8,18 @@
 using std::cout, std::endl, std::vector;
 
 int main() {
-  vector<Character> charList;
-  charList.push_back(Mage(100, 30, 10, 100));
-  charList.push_back(Archer(150, 15, 15, 64));
-  charList.push_back(Warrior(200, 20, 20, "Excalibur"));
-  charList.push_back(Character(1, 1, 1));
+  vector<Character*> charList;
+  charList.push_back(new Mage(100, 30, 10, 100));
+  charList.push_back(new Archer(150, 15, 15, 64));
+  charList.push_back(new Warrior(200, 20, 20, "Excalibur"));
+  charList.push_back(new Character(1, 1, 1));
 
-  for (const Character& c : charList) {
-    cout << c << endl;
+  for (auto c : charList) {
+    cout << *c << "\n" << endl;
+  }
+
+  for (auto c : charList) {
+    delete c;
   }
 
   return 0;

@@ -5,7 +5,6 @@
 class Archer: public Character {
   public:
     Archer(int health, int damage, int defense, int arrows): Character(health, damage, defense), arrows(arrows) {}
-    friend ostream& operator<<(ostream& out, const Archer& self);
     string toString() const;
   private:
     int arrows;
@@ -16,9 +15,4 @@ string Archer::toString() const {
   ss << Character::toString();
   ss << "Arrows: " << arrows;
   return ss.str();
-}
-
-ostream& operator<<(ostream& out, const Archer& self) {
-  out << self.toString();
-  return out;
 }
