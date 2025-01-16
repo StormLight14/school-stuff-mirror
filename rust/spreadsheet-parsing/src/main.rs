@@ -1,7 +1,7 @@
 use std::fs::read_to_string;
 
 fn main() {
-    let spreadsheet_file = match read_to_string("cs2550_people.csv") {
+    let spreadsheet_file = match read_to_string("cs2550_people.tsv") {
         Ok(file) => file,
         Err(why) => {
             println!("There was an error reading the spreadsheet file: {:?}", why);
@@ -18,7 +18,7 @@ fn main() {
 
         let mut person: Vec<String> = Vec::new();
 
-        for item in line.split(",") {
+        for item in line.split("\t") { // split by tabs
             person.push(item.to_string());
         }
 
@@ -38,8 +38,8 @@ fn main() {
     
     println!("\nNames in alphabetical order:");
     names.sort_by(|a, b| a.to_lowercase().cmp(&b.to_lowercase()));
-    for name in names.iter() {
-        println!("{}", name);
+    for (i, name) in names.iter().enumerate() {
+        println!("{}. {}", i+1, name);
     }
 
     println!("\nPeople who have children:");
