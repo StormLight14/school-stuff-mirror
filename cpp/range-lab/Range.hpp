@@ -38,7 +38,7 @@ int Range<T>::length() {
 
 template<typename T>
 T Range<T>::sum() {
-  int total = 0;
+  T total = T();
 
   for (auto& n : values) {
     total += n;
@@ -49,27 +49,47 @@ T Range<T>::sum() {
 
 template<typename T>
 T Range<T>::average() {
-  return sum() / length();
+  if (length() != 0) {
+    return sum() / length();
+  } else {
+    return 0;
+  }
 }
 
 template<typename T>
 T Range<T>::min() {
-  return values[0];
+  if (step > 0) {
+    return values[0];
+  } else {
+    return values[length() - 1];
+  }
+  
 }
 
 template<typename T>
 T Range<T>::max() {
-  return values[length()];
+  if (step > 0) {
+    return values[length() - 1];
+  } else {
+    return values[0];
+  }
 }
 
 template<typename T>
 void Range<T>::createValues() {
-  for (int i=start; i<end; i+=step) {
-    if (i < end) {
-      values.push_back(i);
+    T currentValue = start;
+    
+    if (step == 0) {
+        throw std::invalid_argument("ya can't make step 0 cause that'd make an infinite loop, silly goose");
     }
-  }
+
+    while ((step >= 0 && currentValue <= end) || (step <= 0 && currentValue >= end)) {
+        values.push_back(currentValue);
+        currentValue += step;
+    }
 }
+
+
 
 template<typename T>
 std::ostream& operator<<(std::ostream& out, const Range<T>& r) {
