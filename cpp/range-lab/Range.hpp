@@ -65,7 +65,9 @@ T Range<T>::max() {
 template<typename T>
 void Range<T>::createValues() {
   for (int i=start; i<end; i+=step) {
-    values.push_back(i);
+    if (i < end) {
+      values.push_back(i);
+    }
   }
 }
 
