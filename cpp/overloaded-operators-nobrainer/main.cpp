@@ -5,10 +5,10 @@ using namespace std;
 
 int main()
 {
-    Point p1;
+    Point<double> p1(10.5555, 10.5555);
     cout << "Point 1" << endl;
     cin >> p1;
-    Point p2;
+    Point<double> p2(10.5555, 10.5555);
     cout << "Point 2" << endl;
     cin >> p2;
 
