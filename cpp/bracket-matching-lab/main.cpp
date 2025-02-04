@@ -1,5 +1,5 @@
 #include <iostream>
-#include "BracketCheck.h"
+#include "BracketCheck.hpp"
 using namespace std;
 bool check(string , string , bool );
 int main()
