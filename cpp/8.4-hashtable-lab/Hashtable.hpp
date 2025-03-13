@@ -82,7 +82,9 @@ Hashtable<Type>& Hashtable<Type>::operator=(const Hashtable<Type>& other) {
 
 template<typename Type>
 int Hashtable<Type>::hash(Type value) const {
-  return static_cast<int>(value) % capacity; // compiler complained abt the fmod thing
+  int num = static_cast<int>(value) % capacity;
+  //cout << value << " % " << capacity << " = " << num << "\n";
+  return num;
 }
 
 template<typename Type>
@@ -148,7 +150,9 @@ void Hashtable<Type>::insert(Type value) {
             return;
         }
         i++;
-        index = (index + i * i);
+        //cout << hash(value) << " + " << i*i << " = ";
+        index = (hash(value) + i * i) % capacity;
+        //cout << index << "\n";
     }
 
     hashtable[index] = {value, false};
@@ -162,7 +166,7 @@ void Hashtable<Type>::remove(Type value) {
   int i = 0;
   while (hashtable[index].empty || hashtable[index].data != value) {
     i += 1;
-    index = (index + i * i);
+    index = (hash(value) + i * i) % capacity;
     if (index == hash(value)) {
       return;
     }
@@ -178,7 +182,7 @@ bool Hashtable<Type>::contains(Type value) const {
   int i = 0;
   while (hashtable[index].empty || hashtable[index].data != value) {
     i += 1;
-    index = (index + i * i);
+    index = (hash(value) + i * i) % capacity;
     if (index == hash(value)) {
       return false;
     }
@@ -237,7 +241,7 @@ int Hashtable<Type>::indexOf(Type value) {
     }
     
     i++;
-    index = (index + i * i);
+    index = (hash(value) + i * i) % capacity;
 
     if (index == hash(value)) {
       return -1;

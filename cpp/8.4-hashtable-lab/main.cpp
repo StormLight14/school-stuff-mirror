@@ -39,7 +39,7 @@ int main()
 		cout << "You have passed " << passed << "/9 tests" << endl;
 	}
 	else {
-		cout << "womp womp you failed, " << passed << "/9 tests passed" << endl;
+		cout << "womp womp you failed, " << passed << "/9 tests passed hoorayyyyyy!" << endl;
 	}
 
 	return 0;
@@ -220,7 +220,7 @@ bool testResize() {
 bool testQuadraticProbing() {
 	bool passed = true;
 	cout << "-------------Test Quadratic Probing --------------" << endl;
-	Hashtable<double> table(17);
+	Hashtable<int> table(17);
 	table.insert(4);	// 4 + 0^2
 	table.insert(21);	// 4 + 1^2
 	table.insert(38);	// 4 + 2^2
