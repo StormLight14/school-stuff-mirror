@@ -36,7 +36,12 @@ private:
 
 template <typename T>
 void BTree<T>::insert(const T& item) {
-  
+  if (root == nullptr) {
+    root = make_shared<Node<T>>(item);
+    return;
+  }
+
+  insert(item, root);
 }
 
 template <typename T>
