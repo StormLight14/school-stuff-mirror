@@ -99,6 +99,35 @@ void BTree<T>::preOrder(shared_ptr<Node<T>> node_ptr) {
 }
 
 template <typename T>
+void BTree<T>::postOrder() {
+  postOrder(root);
+}
+
+template <typename T>
+void BTree<T>::postOrder(shared_ptr<Node<T>> node_ptr) {
+  if (node_ptr) {
+    postOrder(node_ptr->left);
+    postOrder(node_ptr->right);
+    cout << node_ptr->data << " ";
+  }
+}
+
+template <typename T>
+void BTree<T>::inOrder() {
+  inOrder(root);
+}
+
+
+template <typename T>
+void BTree<T>::inOrder(shared_ptr<Node<T>> node_ptr) {
+  if (node_ptr) {
+    inOrder(node_ptr->left);
+    cout << node_ptr->data << " ";
+    inOrder(node_ptr->right);
+  }
+}
+
+template <typename T>
 int BTree<T>::nodeCount() {
   return nodeCount(root);
 }
