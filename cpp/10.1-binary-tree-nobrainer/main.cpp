@@ -23,7 +23,7 @@ int main() {
   //myTree.inOrder();
   //cout << endl << endl;
   checkTest("Test #1, number of nodes", 35, myTree.nodeCount());
-  //checkTest("Test #2, number of leaves,", 11, myTree.leavesCount());
+  checkTest("Test #2, number of leaves,", 11, myTree.leavesCount());
  
   return 0;
 }
@@ -36,8 +36,8 @@ BTree <int> populateTree(){
   for(int i = 0; i < size; i++){
       myTree.insert(values[i]);
   }
-  return myTree;
 
+  return myTree;
 }
 
 //Helps with Testing

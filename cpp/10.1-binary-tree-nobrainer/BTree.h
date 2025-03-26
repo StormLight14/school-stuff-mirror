@@ -111,3 +111,21 @@ int BTree<T>::nodeCount(shared_ptr<Node<T>> node_ptr) {
 
   return 0;
 }
+
+template <typename T>
+int BTree<T>::leavesCount() {
+  return leavesCount(root);
+}
+
+template <typename T>
+int BTree<T>::leavesCount(shared_ptr<Node<T>> node_ptr) {
+  if (node_ptr) {
+    if (node_ptr->left == nullptr && node_ptr->right == nullptr) {
+      return 1;
+    } else {
+      return 0 + leavesCount(node_ptr->left) + leavesCount(node_ptr->right);
+    }
+  }
+
+  return 0;
+}
