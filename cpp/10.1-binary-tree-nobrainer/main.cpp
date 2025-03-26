@@ -9,13 +9,20 @@ BTree<int> populateTree();
 
 int main() {
   BTree<int> myTree = populateTree();
+  /*
+  myTree.insert(6);
+  myTree.insert(34);
+  myTree.insert(5);
+  myTree.insert(4);
+  myTree.insert(3);
   myTree.preOrder();
+  */
    cout << endl << endl;
   //myTree.postOrder();
    //cout << endl << endl;
   //myTree.inOrder();
   //cout << endl << endl;
-  //checkTest("Test #1, number of nodes", 35, myTree.nodeCount());
+  checkTest("Test #1, number of nodes", 35, myTree.nodeCount());
   //checkTest("Test #2, number of leaves,", 11, myTree.leavesCount());
  
   return 0;
