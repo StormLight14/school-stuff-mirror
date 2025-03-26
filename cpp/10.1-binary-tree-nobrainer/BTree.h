@@ -4,7 +4,7 @@ using namespace std;
 
 template <typename T>
 struct Node {
-  Node(T data) : data(data), left(nullptr), right(nullptr);
+  Node(T data) : data(data), left(nullptr), right(nullptr) {};
   T data;
   shared_ptr<Node<T>> left;
   shared_ptr<Node<T>> right;
@@ -13,7 +13,7 @@ struct Node {
 template <typename T>
 class BTree {
 public:
-  BTree() : root(nullptr);
+  BTree() : root(nullptr) {};
   void insert(const T& item);
   void remove(const T& item);
   void preOrder();
@@ -45,7 +45,7 @@ void BTree<T>::insert(const T& item) {
 }
 
 template <typename T>
-void BTree<T>::preorder() {
+void BTree<T>::preOrder() {
   preorder(root);
 }
 
