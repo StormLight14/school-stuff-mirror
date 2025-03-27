@@ -23,6 +23,11 @@ public:
   void postOrder();
   int nodeCount();
   int leavesCount();
+  shared_ptr<Node<T>> find(const T& item);
+  shared_ptr<Node<T>> find(const T& item, shared_ptr<Node<T>> ptr);
+  shared_ptr<Node<T>> findRightMostNode();
+  shared_ptr<Node<T>> findRightMostNode(shared_ptr<Node<T>> ptr);
+  shared_ptr<Node<T>> findParent(shared_ptr<Node<T>> ptr);
 
 private:
   void preOrder(shared_ptr<Node<T>> ptr);
@@ -83,6 +88,26 @@ void BTree<T>::insert(const T& item, shared_ptr<Node<T>> node_ptr) {
     }
   }
 }
+
+template <typename T>
+shared_ptr<Node<T>> BTree<T>::find(const T& item) {
+  return find(root);
+}
+
+template <typename T>
+shared_ptr<Node<T>> BTree<T>::find(const T& item, shared_ptr<Node<T>> node_ptr) {
+  if (node_ptr) {
+    if (node_ptr->data == item) {
+      return node_ptr;
+    } else {
+      return find(item, node_ptr->left);
+      return find(item, node_ptr->right);
+    }
+  } else {
+    return nullptr;
+  }
+}
+
 
 template <typename T>
 void BTree<T>::preOrder() {
