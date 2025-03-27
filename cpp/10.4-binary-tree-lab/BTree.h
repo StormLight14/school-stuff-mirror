@@ -171,6 +171,37 @@ void BTree<T>::remove(const T& item, shared_ptr<Node<T>> node_ptr) {
     remove(item, node_ptr->right);
   } else if (item < node_ptr->data) {
     remove(item, node_ptr->left);
+  } else { // found the item to be removed
+    shared_ptr<Node<T>> parent = findParent(node_ptr);
+    if (node_ptr->left == nullptr) {
+      if (parent == nullptr) {
+        root = node_ptr->right;
+      } else if (parent->left == node_ptr) {
+        parent->left = node_ptr->right;
+      } else {
+        parent->right = node_ptr->right;
+      }
+    }
+    else if (node_ptr->right == nullptr) {
+      if (parent == nullptr) {
+        root = node_ptr->left;
+      } else if (parent->left == node_ptr) {
+        parent->left = node_ptr->left;
+      } else {
+        parent->right = node_ptr->left;
+      }
+    }
+    else {
+      shared_ptr<Node<T>> rightmost_node = findRightMostNode(node_ptr->left);
+      shared_ptr<Node<T>> rightmost_node_parent = findParent(rightmost_node);
+      if (rightmost_node_parent->left == rightmost_node) {
+        rightmost_node_parent->left = rightmost_node->left;
+      } else {
+        rightmost_node_parent->right = rightmost_node->right;
+      }
+
+      node_ptr->data = rightmost_node->data;
+    }
   }
 }
 

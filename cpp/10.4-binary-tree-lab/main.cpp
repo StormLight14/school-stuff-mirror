@@ -13,13 +13,12 @@ void deleteTest(BTree<int>);
 BTree<int> populateTree();
 
 int main() {
-
 	BTree<int> myTree = populateTree();
 
 	testFindMethod(myTree);
 	testRightMostNodeSearch(myTree);
   testFindParent(myTree);
-	//deleteTest(myTree);
+	deleteTest(myTree);
 	return 0;
 }
 
