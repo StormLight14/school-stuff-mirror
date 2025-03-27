@@ -47,5 +47,6 @@
     "streambuf": "cpp",
     "typeinfo": "cpp"
   },
-  "C_Cpp.errorSquiggles": "disabled"
+  "C_Cpp.errorSquiggles": "disabled",
+  "cmake.sourceDirectory": "/workspaces/school-stuff-mirror/cpp/8puzzle"
 }

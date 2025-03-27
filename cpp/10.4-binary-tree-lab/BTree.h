@@ -158,12 +158,20 @@ shared_ptr<Node<T>> BTree<T>::findParent(shared_ptr<Node<T>> child, shared_ptr<N
 
 template <typename T>
 void BTree<T>::remove(const T& item) {
-
+  remove(item, root);
 }
 
 template <typename T>
 void BTree<T>::remove(const T& item, shared_ptr<Node<T>> node_ptr) {
+  if (node_ptr == nullptr) {
+    return;
+  }
 
+  if (item > node_ptr->data) {
+    remove(item, node_ptr->right);
+  } else if (item < node_ptr->data) {
+    remove(item, node_ptr->left);
+  }
 }
 
 template <typename T>
