@@ -2,8 +2,9 @@
 #include <cmath>
 #include <sstream>
 #include <memory>
-#include "Queue.h"
-#include "Person.h"
+#include <climits>
+#include "Queue.hpp"
+#include "Person.hpp"
 
 using namespace std;
 Queue<Person>findWinners(int numberOfCandies, Queue<Person>guessList);
@@ -27,12 +28,31 @@ int main() {
 	numberOfCandies represents the number of Candies in the Jar. 
 	guessList contains the names and guesses of each of the people playing the game.
 ********** TODO ********** TODO ********** TODO ********** TODO ********** TODO*/
-Queue<Person> findWinners(int numberOfCandies, Queue<Person>guessList) {
-	Queue<Person>winners;
-	
+Queue<Person> findWinners(int numberOfCandies, Queue<Person> guessList) {
+  Queue<Person> winners;
+  int minDifference = INT_MAX;
 
-	return winners;
+  Queue<Person> tempList = guessList;
+  while (!tempList.isEmpty()) {
+      Person current = tempList.peek();
+      int difference = abs(current.guess - numberOfCandies);
+      if (difference < minDifference) {
+          minDifference = difference;
+      }
+      tempList.dequeue();
+  }
+
+  while (!guessList.isEmpty()) {
+      Person current = guessList.peek();
+      if (abs(current.guess - numberOfCandies) == minDifference) {
+          winners.enqueue(current);
+      }
+      guessList.dequeue();
+  }
+
+  return winners;
 }
+
 
 
 void testQueue() {
